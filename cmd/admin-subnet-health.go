@@ -97,7 +97,7 @@ func checkAdminHealthSyntax(ctx *cli.Context) {
 	}
 }
 
-//compress and tar health report output
+// compress and tar health report output
 func tarGZ(c HealthReportInfo, filename string) error {
 	f, err := os.OpenFile(filename, os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
