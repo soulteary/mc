@@ -51,7 +51,7 @@ var (
 
 func getHColCode(surplusShards, parityShards int) (c col, err error) {
 	if parityShards < 1 || parityShards > 8 || surplusShards > parityShards {
-		return c, fmt.Errorf("Invalid parity shard count/surplus shard count given")
+		return c, fmt.Errorf("invalid parity shard count/surplus shard count given")
 	}
 	if surplusShards < 0 {
 		return colGrey, err
@@ -437,7 +437,7 @@ func (ui *uiData) DisplayAndFollowHealStatus(aliasedURL string) (res madmin.Heal
 			}
 
 			if res.Summary == "stopped" {
-				return res, fmt.Errorf("Heal had an error - %s", res.FailureDetail)
+				return res, fmt.Errorf("heal had an error - %s", res.FailureDetail)
 			}
 
 			time.Sleep(time.Second)

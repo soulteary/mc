@@ -42,7 +42,7 @@ func (t RoundTripTrace) RoundTrip(req *http.Request) (res *http.Response, err er
 	timeStamp := time.Now()
 
 	if t.Transport == nil {
-		return nil, errors.New("Invalid Argument")
+		return nil, errors.New("invalid argument")
 	}
 
 	res, err = t.Transport.RoundTrip(req)

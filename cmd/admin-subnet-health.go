@@ -24,7 +24,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -208,7 +207,7 @@ func uploadHealthReport(alias string, filename string, license string, dev bool)
 	defer resp.Body.Close()
 
 	var respBody []byte
-	respBody, e = ioutil.ReadAll(resp.Body)
+	respBody, e = io.ReadAll(resp.Body)
 	if e != nil {
 		return e
 	}
@@ -223,7 +222,7 @@ func uploadHealthReport(alias string, filename string, license string, dev bool)
 		return nil
 	}
 
-	return fmt.Errorf("Upload to subnet failed with status code %d: %s", resp.StatusCode, respBody)
+	return fmt.Errorf("upload to subnet failed with status code %d: %s", resp.StatusCode, respBody)
 }
 
 func subnetUploadURL(alias string, filename string, license string, dev bool) string {

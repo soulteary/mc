@@ -18,8 +18,8 @@ checks:
 
 getdeps:
 	@mkdir -p ${GOPATH}/bin
-	@which golangci-lint 1>/dev/null || (echo "Installing golangci-lint" && curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOPATH)/bin v1.27.0)
-	@which stringer 1>/dev/null || (echo "Installing stringer" && go get golang.org/x/tools/cmd/stringer)
+	@which golangci-lint 1>/dev/null || (echo "Installing golangci-lint" && go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.12.2)
+	@which stringer 1>/dev/null || (echo "Installing stringer" && go install golang.org/x/tools/cmd/stringer@latest)
 
 crosscompile:
 	@(env bash $(PWD)/buildscripts/cross-compile.sh)
@@ -40,7 +40,6 @@ fmt:
 
 lint:
 	@echo "Running $@ check"
-	@GO111MODULE=on ${GOPATH}/bin/golangci-lint cache clean
 	@GO111MODULE=on ${GOPATH}/bin/golangci-lint run --timeout=5m --config ./.golangci.yml
 
 # Builds mc, runs the verifiers then runs the tests.
@@ -53,7 +52,7 @@ test: verifiers build
 
 test-race: verifiers build
 	@echo "Running unit tests under -race"
-	@GO111MODULE=on go test -race -v --timeout 20m ./... 1>/dev/null
+	@GO111MODULE=on go test -race -v --timeout 20m ./...
 
 # Verify mc binary
 verify:

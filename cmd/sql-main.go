@@ -24,7 +24,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -153,7 +152,7 @@ func parseKVArgs(is string) (map[string]string, *probe.Error) {
 		for index < len(is) {
 			i := strings.Index(is[index:], "=")
 			if i == -1 {
-				return nil, probe.NewError(errors.New("Arguments should be of the form key=value,... "))
+				return nil, probe.NewError(errors.New("arguments should be of the form key=value,... "))
 			}
 			key = is[index : index+i]
 			s = i + index + 1
@@ -181,7 +180,7 @@ func parseKVArgs(is string) (map[string]string, *probe.Error) {
 			value = is[s:vEnd]
 			index = vEnd + 1
 			if _, ok := kvmap[strings.ToLower(key)]; ok {
-				return nil, probe.NewError(fmt.Errorf("More than one key=value found for %s", strings.TrimSpace(key)))
+				return nil, probe.NewError(fmt.Errorf("more than one key=value found for %s", strings.TrimSpace(key)))
 			}
 			kvmap[strings.ToLower(key)] = strings.NewReplacer(`\n`, "\n", `\t`, "\t", `\r`, "\r").Replace(value)
 		}
@@ -324,7 +323,7 @@ func getCSVHeader(sourceURL string, encKeyDB map[string][]prefixSSEPair) ([]stri
 			defer r.Close()
 		} else if strings.Contains(ctype, "bzip") {
 			defer r.Close()
-			r = ioutil.NopCloser(bzip2.NewReader(r))
+			r = io.NopCloser(bzip2.NewReader(r))
 		} else {
 			defer r.Close()
 		}

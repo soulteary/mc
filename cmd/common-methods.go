@@ -66,7 +66,7 @@ func parseKey(sseKeys string) (sse string, err *probe.Error) {
 	}
 	decodedString, e := base64.StdEncoding.DecodeString(secretValue)
 	if e != nil || len(decodedString) != 32 {
-		return "", probe.NewError(errors.New("Encryption key should be 32 bytes plain text key or 44 bytes base64 encoded key"))
+		return "", probe.NewError(errors.New("encryption key should be 32 bytes plain text key or 44 bytes base64 encoded key"))
 	}
 	return encryptString[0] + "=" + string(decodedString), nil
 }

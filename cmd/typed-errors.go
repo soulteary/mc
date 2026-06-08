@@ -34,7 +34,7 @@ var errDummy = func() *probe.Error {
 type invalidArgumentErr error
 
 var errInvalidArgument = func() *probe.Error {
-	msg := "Invalid arguments provided, please refer " + "`mc <command> -h` for relevant documentation."
+	msg := "invalid arguments provided, please refer " + "`mc <command> -h` for relevant documentation"
 	return probe.NewError(invalidArgumentErr(errors.New(msg))).Untrace()
 }
 

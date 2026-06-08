@@ -104,7 +104,7 @@ func mainEncryptSet(cliCtx *cli.Context) error {
 		algorithm = strings.ToLower(args[0])
 	}
 	if algorithm != "sse-s3" && algorithm != "sse-kms" {
-		fatalIf(probe.NewError(fmt.Errorf("Unknown argument `%s` passed", algorithm)), "Invalid encryption algorithm")
+		fatalIf(probe.NewError(fmt.Errorf("unknown argument `%s` passed", algorithm)), "Invalid encryption algorithm")
 	}
 	fatalIf(client.SetEncryption(ctx, algorithm, keyID), "Unable to enable auto encryption")
 	msg := encryptSetMessage{

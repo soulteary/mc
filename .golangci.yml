@@ -1,28 +1,44 @@
-linters-settings:
-  golint:
-    min-confidence: 0
-
-  misspell:
-    locale: US
+version: "2"
 
 linters:
-  disable-all: true
+  default: none
   enable:
-    - typecheck
-    - goimports
-    - misspell
     - govet
-    - golint
     - ineffassign
-    - gosimple
-    - deadcode
-    - structcheck
+    - misspell
+    - staticcheck
+  settings:
+    misspell:
+      locale: US
+    staticcheck:
+      checks:
+        - all
+        - "-QF1001"
+        - "-QF1002"
+        - "-QF1003"
+        - "-QF1004"
+        - "-QF1007"
+        - "-QF1008"
+        - "-QF1012"
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - text: "instead of using struct literal"
+        linters:
+          - staticcheck
+      - text: "should have a package comment"
+        linters:
+          - staticcheck
+      - text: "error strings should not be capitalized or end with punctuation or a newline"
+        linters:
+          - staticcheck
 
-issues:
-  exclude-use-default: false
-  exclude:
-      - instead of using struct literal
-      - should have a package comment
-      - error strings should not be capitalized or end with punctuation or a newline
-service:
-  golangci-lint-version: 1.20.0 # use the fixed version to not introduce new linters unexpectedly
+formatters:
+  enable:
+    - gofmt
+    - goimports

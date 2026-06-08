@@ -183,7 +183,7 @@ func fetchRemoteTarget(cli *cli.Context) (sourceBucket string, bktTarget *madmin
 	args := cli.Args()
 	argCount := len(args)
 	if argCount < 2 {
-		fatalIf(probe.NewError(fmt.Errorf("Missing Remote target configuration")), "Unable to parse remote target")
+		fatalIf(probe.NewError(fmt.Errorf("missing remote target configuration")), "Unable to parse remote target")
 	}
 	_, sourceBucket = url2Alias(args[0])
 	TargetURL := args[1]

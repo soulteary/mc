@@ -55,7 +55,7 @@ EXAMPLES:
 }
 
 var (
-	errBadUserGroupArg = errors.New("Last argument must be of the form user=xx or group=xx")
+	errBadUserGroupArg = errors.New("last argument must be of the form user=xx or group=xx")
 )
 
 func checkAdminPolicySetSyntax(ctx *cli.Context) {

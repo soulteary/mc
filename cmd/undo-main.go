@@ -220,7 +220,7 @@ func undoURL(ctx context.Context, aliasedURL string, last int, recursive, dryRun
 
 		if lastObjectPath != content.URL.Path {
 			// Print any object in the current list before reinitializing it
-			exitErr = undoLastNOperations(ctx, clnt, perObjectVersions, last, dryRun)
+			_ = undoLastNOperations(ctx, clnt, perObjectVersions, last, dryRun)
 			lastObjectPath = content.URL.Path
 			perObjectVersions = []*ClientContent{}
 		}

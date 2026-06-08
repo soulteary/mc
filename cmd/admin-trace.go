@@ -209,7 +209,7 @@ func tracingOpts(ctx *cli.Context) (opts madmin.ServiceTraceOpts, e error) {
 	if t := ctx.String("response-threshold"); t != "" {
 		d, e := time.ParseDuration(t)
 		if e != nil {
-			return opts, fmt.Errorf("Unable to parse threshold argument: %w", e)
+			return opts, fmt.Errorf("unable to parse threshold argument: %w", e)
 		}
 		opts.Threshold = d
 	}
@@ -483,7 +483,6 @@ func colorizedNodeName(nodeName string) string {
 }
 
 func (t traceMessage) JSON() string {
-	t.Status = "success"
 	rqHdrs := make(map[string]string)
 	rspHdrs := make(map[string]string)
 	rq := t.Trace.ReqInfo

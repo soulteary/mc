@@ -28,9 +28,9 @@ var testParseKVArgsCases = []struct {
 }{
 	{"fh=use,rd=|,fd=;,qec=\"", map[string]string{"fh": "use", "rd": "|", "fd": ";", "qec": "\""}, "<nil>"},
 	{"", map[string]string{}, "<nil>"},
-	{"not the right format", map[string]string{}, "Arguments should be of the form key=value,... "},
+	{"not the right format", map[string]string{}, "arguments should be of the form key=value,... "},
 	{"k==v", map[string]string{"k": "=v"}, "<nil>"},
-	{"k=v1,k=v2", map[string]string{}, "More than one key=value found for k"},
+	{"k=v1,k=v2", map[string]string{}, "more than one key=value found for k"},
 	{"k=v1;k=v2", map[string]string{"k": "v1;k=v2"}, "<nil>"},
 }
 
@@ -82,7 +82,7 @@ var testParseSerializationCases = []struct {
 		validCSVInputKeys,
 		validCSVInputAbbrKeys,
 		map[string]string{},
-		"More than one key=value found for ",
+		"more than one key=value found for ",
 	},
 	{"recordDelimiter=\n\n,FieldDelimiter=|,QuoteChAR=\"",
 		append(validCSVCommonKeys, validCSVInputKeys...),

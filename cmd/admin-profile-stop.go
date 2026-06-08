@@ -18,7 +18,6 @@ package cmd
 
 import (
 	"io"
-	"io/ioutil"
 	"os"
 	"time"
 
@@ -100,7 +99,7 @@ func mainAdminProfileStop(ctx *cli.Context) error {
 	}
 
 	// Create profile zip file
-	tmpFile, e := ioutil.TempFile("", "mc-profile-")
+	tmpFile, e := os.CreateTemp("", "mc-profile-")
 	fatalIf(probe.NewError(e), "Unable to download profile data.")
 
 	// Ask for profile data, which will come compressed with zip format

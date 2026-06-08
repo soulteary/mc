@@ -20,7 +20,7 @@ import (
 	"crypto"
 	"encoding/hex"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -125,7 +125,7 @@ func getModTime(path string) (t time.Time, err *probe.Error) {
 	var e error
 	path, e = filepath.EvalSymlinks(path)
 	if e != nil {
-		return t, probe.NewError(fmt.Errorf("Unable to get absolute path of %s. %w", path, e))
+		return t, probe.NewError(fmt.Errorf("unable to get absolute path of %s. %w", path, e))
 	}
 
 	// Version is mc non-standard, we will use mc binary's
@@ -133,7 +133,7 @@ func getModTime(path string) (t time.Time, err *probe.Error) {
 	var fi os.FileInfo
 	fi, e = os.Stat(path)
 	if e != nil {
-		return t, probe.NewError(fmt.Errorf("Unable to get ModTime of %s. %w", path, e))
+		return t, probe.NewError(fmt.Errorf("unable to get ModTime of %s. %w", path, e))
 	}
 
 	// Return the ModTime
@@ -245,14 +245,14 @@ func downloadReleaseURL(releaseChecksumURL string, timeout time.Duration) (conte
 		return content, probe.NewError(e)
 	}
 	if resp == nil {
-		return content, probe.NewError(fmt.Errorf("No response from server to download URL %s", releaseChecksumURL))
+		return content, probe.NewError(fmt.Errorf("no response from server to download URL %s", releaseChecksumURL))
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		return content, probe.NewError(fmt.Errorf("Error downloading URL %s. Response: %v", releaseChecksumURL, resp.Status))
 	}
-	contentBytes, e := ioutil.ReadAll(resp.Body)
+	contentBytes, e := io.ReadAll(resp.Body)
 	if e != nil {
 		return content, probe.NewError(fmt.Errorf("Error reading response. %s", err))
 	}
@@ -288,7 +288,7 @@ func DownloadReleaseData(timeout time.Duration) (data string, err *probe.Error) 
 func parseReleaseData(data string) (sha256Hex string, releaseTime time.Time, err *probe.Error) {
 	fields := strings.Fields(data)
 	if len(fields) != 2 {
-		return sha256Hex, releaseTime, probe.NewError(fmt.Errorf("Unknown release data `%s`", data))
+		return sha256Hex, releaseTime, probe.NewError(fmt.Errorf("unknown release data `%s`", data))
 	}
 
 	sha256Hex = fields[0]
@@ -296,10 +296,10 @@ func parseReleaseData(data string) (sha256Hex string, releaseTime time.Time, err
 
 	fields = strings.SplitN(releaseInfo, ".", 2)
 	if len(fields) != 2 {
-		return sha256Hex, releaseTime, probe.NewError(fmt.Errorf("Unknown release information `%s`", releaseInfo))
+		return sha256Hex, releaseTime, probe.NewError(fmt.Errorf("unknown release information `%s`", releaseInfo))
 	}
 	if fields[0] != "mc" {
-		return sha256Hex, releaseTime, probe.NewError(fmt.Errorf("Unknown release `%s`", releaseInfo))
+		return sha256Hex, releaseTime, probe.NewError(fmt.Errorf("unknown release `%s`", releaseInfo))
 	}
 
 	releaseTime, err = releaseTagToReleaseTime(fields[1])

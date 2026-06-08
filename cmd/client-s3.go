@@ -1463,7 +1463,6 @@ func (c *S3Client) Stat(ctx context.Context, opts StatOptions) (*ClientContent, 
 		if object == objectStat.Key || object == strings.TrimSuffix(objectStat.Key, string(c.targetURL.Separator)) {
 			return c.objectInfo2ClientContent(bucket, objectStat), nil
 		}
-		break
 	}
 
 	return nil, probe.NewError(ObjectMissing{opts.timeRef})
@@ -2403,7 +2402,7 @@ func (c *S3Client) SetVersion(ctx context.Context, status string) *probe.Error {
 	case "suspend":
 		err = c.api.SuspendVersioning(ctx, bucket)
 	default:
-		return probe.NewError(fmt.Errorf("Invalid versioning status"))
+		return probe.NewError(fmt.Errorf("invalid versioning status"))
 	}
 	return probe.NewError(err)
 }
@@ -2455,7 +2454,7 @@ func (c *S3Client) SetReplication(ctx context.Context, cfg *replication.Config, 
 		}
 	case replication.ImportOption:
 	default:
-		return probe.NewError(fmt.Errorf("Invalid replication option"))
+		return probe.NewError(fmt.Errorf("invalid replication option"))
 	}
 	if e := c.api.SetBucketReplication(ctx, bucket, *cfg); e != nil {
 		return probe.NewError(e)
@@ -2511,7 +2510,7 @@ func (c *S3Client) SetEncryption(ctx context.Context, encType string, kmsKeyID s
 	case "sse-s3":
 		config = sse.NewConfigurationSSES3()
 	default:
-		return probe.NewError(fmt.Errorf("Invalid encryption algorithm %s", encType))
+		return probe.NewError(fmt.Errorf("invalid encryption algorithm %s", encType))
 	}
 	if err := c.api.SetBucketEncryption(ctx, bucket, config); err != nil {
 		return probe.NewError(err)

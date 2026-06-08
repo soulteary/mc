@@ -86,7 +86,7 @@ func (u clusterStruct) String() (msg string) {
 
 	// If nothing has been collected, error out
 	if u.Info.Servers == nil {
-		fatal(probe.NewError(errors.New("Unable to get service status")), "")
+		fatal(probe.NewError(errors.New("unable to get service status")), "")
 	}
 
 	// Initialization

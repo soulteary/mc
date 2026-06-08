@@ -22,7 +22,6 @@ import (
 	"compress/gzip"
 	"context"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 	"syscall"
@@ -111,7 +110,7 @@ func headURL(sourceURL, sourceVersion string, timeRef time.Time, encKeyDB map[st
 			defer reader.Close()
 		} else if strings.Contains(ctype, "bzip") {
 			defer reader.Close()
-			reader = ioutil.NopCloser(bzip2.NewReader(reader))
+			reader = io.NopCloser(bzip2.NewReader(reader))
 		} else {
 			defer reader.Close()
 		}

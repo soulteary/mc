@@ -17,7 +17,6 @@
 package ioutils_test
 
 import (
-	"io/ioutil"
 	"os"
 	"testing"
 	"time"
@@ -34,7 +33,7 @@ type MySuite struct{}
 var _ = Suite(&MySuite{})
 
 func (s *MySuite) TestIoutils(c *C) {
-	path, err := ioutil.TempDir(os.TempDir(), "minio-ioutils_test")
+	path, err := os.MkdirTemp(os.TempDir(), "minio-ioutils_test")
 	c.Assert(err, IsNil)
 	defer os.RemoveAll(path)
 
