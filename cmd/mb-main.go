@@ -131,7 +131,7 @@ func mainMakeBucket(cli *cli.Context) error {
 		// Instantiate client for URL.
 		clnt, err := newClient(targetURL)
 		if err != nil {
-			errorIf(err.Trace(targetURL), "Invalid target `"+targetURL+"`.")
+			errorIf(err.Trace(targetURL), "Invalid target `%s`.", targetURL)
 			cErr = exitStatus(globalErrorExitStatus)
 			continue
 		}
@@ -148,7 +148,7 @@ func mainMakeBucket(cli *cli.Context) error {
 			case BucketNameTopLevel:
 				errorIf(err.Trace(targetURL), "Unable to make prefix, please use `mc mb %s/`.", targetURL)
 			default:
-				errorIf(err.Trace(targetURL), "Unable to make bucket `"+targetURL+"`.")
+				errorIf(err.Trace(targetURL), "Unable to make bucket `%s`.", targetURL)
 			}
 			cErr = exitStatus(globalErrorExitStatus)
 			continue

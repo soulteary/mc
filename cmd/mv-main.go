@@ -160,7 +160,7 @@ func (rm *removeManager) readErrors(errorCh <-chan *probe.Error, targetURL strin
 	go func() {
 		defer rm.wg.Done()
 		for pErr := range errorCh {
-			errorIf(pErr.Trace(targetURL), "Failed to remove in`"+targetURL+"`.")
+			errorIf(pErr.Trace(targetURL), "Failed to remove in`%s`.", targetURL)
 		}
 	}()
 }
@@ -173,7 +173,7 @@ func (rm *removeManager) add(ctx context.Context, targetAlias, targetURL string)
 	if clientInfo == nil {
 		client, pErr := newClientFromAlias(targetAlias, targetURL)
 		if pErr != nil {
-			errorIf(pErr.Trace(targetURL), "Invalid argument `"+targetURL+"`.")
+			errorIf(pErr.Trace(targetURL), "Invalid argument `%s`.", targetURL)
 			return
 		}
 

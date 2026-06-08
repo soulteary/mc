@@ -259,7 +259,7 @@ func applyRetention(ctx context.Context, op lockOpType, target, versionID string
 	}
 
 	if !atLeastOneRetentionApplied {
-		errorIf(errDummy().Trace(clnt.GetURL().String()), "Unable to find any object/version to "+string(op)+" its retention.")
+		errorIf(errDummy().Trace(clnt.GetURL().String()), "Unable to find any object/version to %s its retention.", string(op))
 		cErr = exitStatus(globalErrorExitStatus) // Set the exit status.
 	}
 

@@ -208,9 +208,9 @@ func (m retentionInfoMessageRecord) String() string {
 
 	fmt.Fprintf(&msg, "Mode    : ")
 	if m.Mode == "" {
-		fmt.Fprintf(&msg, console.Colorize("RetentionNotFound", "NO RETENTION"))
+		fmt.Fprint(&msg, console.Colorize("RetentionNotFound", "NO RETENTION"))
 	} else {
-		fmt.Fprintf(&msg, console.Colorize("RetentionSuccess", m.Mode))
+		fmt.Fprint(&msg, console.Colorize("RetentionSuccess", m.Mode))
 		if !m.Until.IsZero() {
 			msg.WriteString(", ")
 			exp := ""
@@ -222,7 +222,7 @@ func (m retentionInfoMessageRecord) String() string {
 				prettyDuration := timeDurationToHumanizedDuration(m.Until.Sub(now)).StringShort()
 				exp = console.Colorize("RetentionSuccess", "expiring in "+prettyDuration)
 			}
-			fmt.Fprintf(&msg, exp)
+			fmt.Fprint(&msg, exp)
 		}
 	}
 	fmt.Fprintf(&msg, "\n")

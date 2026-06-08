@@ -129,7 +129,7 @@ func mainAdminServiceRestart(ctx *cli.Context) error {
 	// Print restart progress
 	printProgress := func() {
 		if !globalQuiet && !globalJSON {
-			coloring.Printf(mark)
+			coloring.Print(mark)
 		}
 	}
 

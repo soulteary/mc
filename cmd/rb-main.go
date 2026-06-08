@@ -205,7 +205,7 @@ func mainRemoveBucket(cliCtx *cli.Context) error {
 		// Instantiate client for URL.
 		clnt, err := newClient(targetURL)
 		if err != nil {
-			errorIf(err.Trace(targetURL), "Invalid target `"+targetURL+"`.")
+			errorIf(err.Trace(targetURL), "Invalid target `%s`.", targetURL)
 			cErr = exitStatus(globalErrorExitStatus)
 			continue
 		}
@@ -214,7 +214,7 @@ func mainRemoveBucket(cliCtx *cli.Context) error {
 			switch err.ToGoError().(type) {
 			case BucketNameEmpty:
 			default:
-				errorIf(err.Trace(targetURL), "Unable to validate target `"+targetURL+"`.")
+				errorIf(err.Trace(targetURL), "Unable to validate target `%s`.", targetURL)
 				cErr = exitStatus(globalErrorExitStatus)
 				continue
 

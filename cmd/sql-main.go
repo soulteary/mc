@@ -456,7 +456,7 @@ func mainSQL(cliCtx *cli.Context) error {
 	writeHdr := true
 	for _, url := range URLs {
 		if _, targetContent, err := url2Stat(ctx, url, "", false, encKeyDB, time.Time{}); err != nil {
-			errorIf(err.Trace(url), "Unable to run sql for "+url+".")
+			errorIf(err.Trace(url), "Unable to run sql for %s.", url)
 			continue
 		} else if !targetContent.Type.IsDir() {
 			if writeHdr {
@@ -469,13 +469,13 @@ func mainSQL(cliCtx *cli.Context) error {
 		targetAlias, targetURL, _ := mustExpandAlias(url)
 		clnt, err := newClientFromAlias(targetAlias, targetURL)
 		if err != nil {
-			errorIf(err.Trace(url), "Unable to initialize target `"+url+"`.")
+			errorIf(err.Trace(url), "Unable to initialize target `%s`.", url)
 			continue
 		}
 
 		for content := range clnt.List(ctx, ListOptions{Recursive: cliCtx.Bool("recursive"), ShowDir: DirNone}) {
 			if content.Err != nil {
-				errorIf(content.Err.Trace(url), "Unable to list on target `"+url+"`.")
+				errorIf(content.Err.Trace(url), "Unable to list on target `%s`.", url)
 				continue
 			}
 			if writeHdr {

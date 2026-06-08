@@ -263,7 +263,7 @@ func removeSingle(url, versionID string, isIncomplete, isFake, isForce, isBypass
 		case http.StatusBadRequest, http.StatusMethodNotAllowed:
 			ignoreStatError = true
 		default:
-			errorIf(pErr.Trace(url), "Failed to remove `"+url+"`.")
+			errorIf(pErr.Trace(url), "Failed to remove `%s`.", url)
 			return exitStatus(globalErrorExitStatus)
 		}
 	} else {
@@ -274,7 +274,7 @@ func removeSingle(url, versionID string, isIncomplete, isFake, isForce, isBypass
 
 	// We should not proceed
 	if ignoreStatError && olderThan != "" || newerThan != "" {
-		errorIf(pErr.Trace(url), "Unable to stat `"+url+"`.")
+		errorIf(pErr.Trace(url), "Unable to stat `%s`.", url)
 		return exitStatus(globalErrorExitStatus)
 	}
 
@@ -298,7 +298,7 @@ func removeSingle(url, versionID string, isIncomplete, isFake, isForce, isBypass
 		targetAlias, targetURL, _ := mustExpandAlias(url)
 		clnt, pErr := newClientFromAlias(targetAlias, targetURL)
 		if pErr != nil {
-			errorIf(pErr.Trace(url), "Invalid argument `"+url+"`.")
+			errorIf(pErr.Trace(url), "Invalid argument `%s`.", url)
 			return exitStatus(globalErrorExitStatus) // End of journey.
 		}
 
@@ -313,7 +313,7 @@ func removeSingle(url, versionID string, isIncomplete, isFake, isForce, isBypass
 		errorCh := clnt.Remove(ctx, isIncomplete, isRemoveBucket, isBypass, contentCh)
 		for pErr := range errorCh {
 			if pErr != nil {
-				errorIf(pErr.Trace(url), "Failed to remove `"+url+"`.")
+				errorIf(pErr.Trace(url), "Failed to remove `%s`.", url)
 				switch pErr.ToGoError().(type) {
 				case PathInsufficientPermission:
 					// Ignore Permission error.
@@ -338,7 +338,7 @@ func listAndRemove(url string, timeRef time.Time, withVersions, isRecursive, isI
 	targetAlias, targetURL, _ := mustExpandAlias(url)
 	clnt, pErr := newClientFromAlias(targetAlias, targetURL)
 	if pErr != nil {
-		errorIf(pErr.Trace(url), "Failed to remove `"+url+"` recursively.")
+		errorIf(pErr.Trace(url), "Failed to remove `%s` recursively.", url)
 		return exitStatus(globalErrorExitStatus) // End of journey.
 	}
 	contentCh := make(chan *ClientContent)
@@ -357,7 +357,7 @@ func listAndRemove(url string, timeRef time.Time, withVersions, isRecursive, isI
 
 	for content := range clnt.List(ctx, listOpts) {
 		if content.Err != nil {
-			errorIf(content.Err.Trace(url), "Failed to remove `"+url+"` recursively.")
+			errorIf(content.Err.Trace(url), "Failed to remove `%s` recursively.", url)
 			switch content.Err.ToGoError().(type) {
 			case PathInsufficientPermission:
 				// Ignore Permission error.
@@ -416,7 +416,7 @@ func listAndRemove(url string, timeRef time.Time, withVersions, isRecursive, isI
 				case contentCh <- content:
 					sent = true
 				case pErr := <-errorCh:
-					errorIf(pErr.Trace(urlString), "Failed to remove `"+urlString+"`.")
+					errorIf(pErr.Trace(urlString), "Failed to remove `%s`.", urlString)
 					switch pErr.ToGoError().(type) {
 					case PathInsufficientPermission:
 						// Ignore Permission error.
@@ -431,7 +431,7 @@ func listAndRemove(url string, timeRef time.Time, withVersions, isRecursive, isI
 
 	close(contentCh)
 	for pErr := range errorCh {
-		errorIf(pErr.Trace(url), "Failed to remove `"+url+"` recursively.")
+		errorIf(pErr.Trace(url), "Failed to remove `%s` recursively.", url)
 		switch pErr.ToGoError().(type) {
 		case PathInsufficientPermission:
 			// Ignore Permission error.
@@ -441,7 +441,7 @@ func listAndRemove(url string, timeRef time.Time, withVersions, isRecursive, isI
 	}
 
 	if !atLeastOneObjectFound {
-		errorIf(errDummy().Trace(url), "No object/version found to be removed in `"+url+"`.")
+		errorIf(errDummy().Trace(url), "No object/version found to be removed in `%s`.", url)
 		return exitStatus(globalErrorExitStatus)
 	}
 

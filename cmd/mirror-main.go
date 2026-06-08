@@ -453,13 +453,13 @@ func (mj *mirrorJob) monitorMirrorStatus() (errDuringMirror bool) {
 			case sURLs.SourceContent != nil:
 				if !isErrIgnored(sURLs.Error) {
 					errorIf(sURLs.Error.Trace(sURLs.SourceContent.URL.String()),
-						fmt.Sprintf("Failed to copy `%s`.", sURLs.SourceContent.URL.String()))
+						"Failed to copy `%s`.", sURLs.SourceContent.URL.String())
 					errDuringMirror = true
 				}
 			case sURLs.TargetContent != nil:
 				// When sURLs.SourceContent is nil, we know that we have an error related to removing
 				errorIf(sURLs.Error.Trace(sURLs.TargetContent.URL.String()),
-					fmt.Sprintf("Failed to remove `%s`.", sURLs.TargetContent.URL.String()))
+					"Failed to remove `%s`.", sURLs.TargetContent.URL.String())
 				errDuringMirror = true
 			default:
 				if sURLs.ErrorCond == differInUnknown {
@@ -917,14 +917,14 @@ func runMirror(ctx context.Context, cancelMirror context.CancelFunc, srcURL, dst
 				}
 				// Bucket only exists in the source, create the same bucket in the destination
 				if err := newDstClt.MakeBucket(ctx, cli.String("region"), false, withLock); err != nil {
-					errorIf(err, "Unable to create bucket at `"+newTgtURL+"`.")
+					errorIf(err, "Unable to create bucket at `%s`.", newTgtURL)
 					continue
 				}
 				if preserve && mirrorBucketsToBuckets {
 					// object lock configuration set on bucket
 					if mode != "" {
 						err = newDstClt.SetObjectLockConfig(ctx, mode, validity, unit)
-						errorIf(err, "Unable to set object lock config in `"+newTgtURL+"`.")
+						errorIf(err, "Unable to set object lock config in `%s`.", newTgtURL)
 						if err != nil && mj.opts.activeActive {
 							return true
 						}
@@ -933,7 +933,7 @@ func runMirror(ctx context.Context, cancelMirror context.CancelFunc, srcURL, dst
 						}
 					}
 					errorIf(copyBucketPolicies(ctx, newSrcClt, newDstClt, isOverwrite),
-						"Unable to copy bucket policies to `"+newDstClt.GetURL().String()+"`.")
+						"Unable to copy bucket policies to `%s`.", newDstClt.GetURL().String())
 				}
 			}
 		}

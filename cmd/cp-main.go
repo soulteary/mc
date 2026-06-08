@@ -577,7 +577,7 @@ loop:
 					console.Eraseline()
 				}
 				errorIf(cpURLs.Error.Trace(cpURLs.SourceContent.URL.String()),
-					fmt.Sprintf("Failed to copy `%s`.", cpURLs.SourceContent.URL.String()))
+					"Failed to copy `%s`.", cpURLs.SourceContent.URL.String())
 				if isErrIgnored(cpURLs.Error) {
 					cpAllFilesErr = false
 					continue loop
