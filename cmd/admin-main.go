@@ -31,7 +31,6 @@ const (
 
 var adminCmdSubcommands = []cli.Command{
 	adminServiceCmd,
-	adminServerUpdateCmd,
 	adminInfoCmd,
 	adminUserCmd,
 	adminGroupCmd,

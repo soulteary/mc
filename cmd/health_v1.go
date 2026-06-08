@@ -196,9 +196,9 @@ func MapHealthInfoToV1(healthInfo madmin.HealthInfo, err error) HealthReportInfo
 
 	ch.Software = SwInfoV1{
 		Minio: MinioHealthInfoV1{
-			Info:     healthInfo.Minio.Info,
-			Config:   healthInfo.Minio.Config,
-			Error:    healthInfo.Minio.Error,
+			Info:     healthInfo.Otterio.Info,
+			Config:   healthInfo.Otterio.Config,
+			Error:    healthInfo.Otterio.Error,
 			ProcInfo: healthInfo.Sys.ProcInfo,
 		},
 		OsInfo: healthInfo.Sys.OsInfo,

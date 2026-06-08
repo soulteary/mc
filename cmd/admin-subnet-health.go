@@ -343,24 +343,24 @@ func fetchServerHealthInfo(ctx *cli.Context, client *madmin.AdminClient) (madmin
 		}
 	}
 
-	admin := spinner("Admin Info", madmin.HealthDataTypeMinioInfo)
+	admin := spinner("Admin Info", madmin.HealthDataTypeOtterioInfo)
 	cpu := spinner("CPU Info", madmin.HealthDataTypeSysCPU)
 	diskHw := spinner("Disk Info", madmin.HealthDataTypeSysDiskHw)
 	osInfo := spinner("OS Info", madmin.HealthDataTypeSysOsInfo)
 	mem := spinner("Mem Info", madmin.HealthDataTypeSysMem)
 	process := spinner("Process Info", madmin.HealthDataTypeSysLoad)
-	config := spinner("Server Config", madmin.HealthDataTypeMinioConfig)
+	config := spinner("Server Config", madmin.HealthDataTypeOtterioConfig)
 	drive := spinner("Drive Test", madmin.HealthDataTypePerfDrive)
 	net := spinner("Network Test", madmin.HealthDataTypePerfNet)
 
 	progress := func(info madmin.HealthInfo) {
-		_ = admin(len(info.Minio.Info.Servers) > 0) &&
+		_ = admin(len(info.Otterio.Info.Servers) > 0) &&
 			cpu(len(info.Sys.CPUInfo) > 0) &&
 			diskHw(len(info.Sys.DiskHwInfo) > 0) &&
 			osInfo(len(info.Sys.OsInfo) > 0) &&
 			mem(len(info.Sys.MemInfo) > 0) &&
 			process(len(info.Sys.ProcInfo) > 0) &&
-			config(info.Minio.Config != nil) &&
+			config(info.Otterio.Config != nil) &&
 			drive(len(info.Perf.DriveInfo) > 0) &&
 			net(len(info.Perf.Net) > 1 && len(info.Perf.NetParallel.Addr) > 0)
 	}
