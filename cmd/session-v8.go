@@ -29,8 +29,8 @@ import (
 
 	json "github.com/minio/mc/pkg/colorjson"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/console"
-	"github.com/minio/minio/pkg/quick"
+	"github.com/soulteary/otterio/pkg/console"
+	"github.com/soulteary/otterio/pkg/quick"
 )
 
 // sessionV8Header for resumable sessions.

@@ -22,7 +22,7 @@ import (
 	"time"
 
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/quick"
+	"github.com/soulteary/otterio/pkg/quick"
 )
 
 /////////////////// Session V6 ///////////////////

@@ -26,7 +26,7 @@ import (
 	"github.com/minio/cli"
 	"github.com/minio/mc/pkg/ioutils"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/console"
+	"github.com/soulteary/otterio/pkg/console"
 )
 
 // ls specific flags.

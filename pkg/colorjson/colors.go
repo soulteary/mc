@@ -18,7 +18,7 @@ package colorjson
 
 import (
 	"github.com/fatih/color"
-	"github.com/minio/minio/pkg/console"
+	"github.com/soulteary/otterio/pkg/console"
 )
 
 const (

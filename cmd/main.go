@@ -34,10 +34,10 @@ import (
 	"github.com/cheggaaa/pb"
 	"github.com/minio/cli"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/console"
-	"github.com/minio/minio/pkg/trie"
-	"github.com/minio/minio/pkg/words"
 	"github.com/pkg/profile"
+	"github.com/soulteary/otterio/pkg/console"
+	"github.com/soulteary/otterio/pkg/trie"
+	"github.com/soulteary/otterio/pkg/words"
 
 	completeinstall "github.com/posener/complete/cmd/install"
 )

@@ -24,7 +24,7 @@ import (
 	"github.com/fatih/color"
 	json "github.com/minio/mc/pkg/colorjson"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/madmin"
+	"github.com/soulteary/otterio/pkg/madmin"
 )
 
 // HelpTmpl template used by all sub-systems

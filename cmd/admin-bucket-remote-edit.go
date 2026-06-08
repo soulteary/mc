@@ -26,9 +26,9 @@ import (
 	"github.com/fatih/color"
 	"github.com/minio/cli"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/auth"
-	"github.com/minio/minio/pkg/console"
-	"github.com/minio/minio/pkg/madmin"
+	"github.com/soulteary/otterio/pkg/auth"
+	"github.com/soulteary/otterio/pkg/console"
+	"github.com/soulteary/otterio/pkg/madmin"
 )
 
 var adminBucketRemoteEditFlags = []cli.Flag{

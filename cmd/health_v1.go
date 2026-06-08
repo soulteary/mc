@@ -25,10 +25,10 @@ import (
 
 	"github.com/minio/mc/pkg/probe"
 	"github.com/minio/minio-go/v7/pkg/set"
-	"github.com/minio/minio/pkg/madmin"
 	"github.com/shirou/gopsutil/v3/cpu"
 	"github.com/shirou/gopsutil/v3/disk"
 	"github.com/shirou/gopsutil/v3/mem"
+	"github.com/soulteary/otterio/pkg/madmin"
 )
 
 // HwServersV1 - hardware health Info

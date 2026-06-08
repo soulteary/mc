@@ -25,7 +25,7 @@ import (
 	"time"
 
 	"github.com/minio/cli"
-	"github.com/minio/minio/pkg/wildcard"
+	"github.com/soulteary/otterio/pkg/wildcard"
 )
 
 //

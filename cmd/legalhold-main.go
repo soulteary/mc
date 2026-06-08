@@ -26,7 +26,7 @@ import (
 	json "github.com/minio/mc/pkg/colorjson"
 	"github.com/minio/mc/pkg/probe"
 	minio "github.com/minio/minio-go/v7"
-	"github.com/minio/minio/pkg/console"
+	"github.com/soulteary/otterio/pkg/console"
 )
 
 var legalHoldSubcommands = []cli.Command{

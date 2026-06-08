@@ -19,7 +19,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/minio/minio/pkg/madmin"
+	"github.com/soulteary/otterio/pkg/madmin"
 )
 
 type hri struct {

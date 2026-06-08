@@ -38,8 +38,8 @@ import (
 	"github.com/klauspost/compress/gzip"
 	"github.com/minio/cli"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/console"
-	"github.com/minio/minio/pkg/madmin"
+	"github.com/soulteary/otterio/pkg/console"
+	"github.com/soulteary/otterio/pkg/madmin"
 	"github.com/tidwall/gjson"
 )
 

@@ -24,8 +24,8 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/minio/cli"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/console"
-	iampolicy "github.com/minio/minio/pkg/iam/policy"
+	"github.com/soulteary/otterio/pkg/console"
+	iampolicy "github.com/soulteary/otterio/pkg/iam/policy"
 )
 
 var adminUserPolicyCmd = cli.Command{

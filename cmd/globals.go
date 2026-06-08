@@ -22,7 +22,7 @@ import (
 	"crypto/x509"
 
 	"github.com/minio/cli"
-	"github.com/minio/minio/pkg/console"
+	"github.com/soulteary/otterio/pkg/console"
 )
 
 const (

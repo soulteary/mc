@@ -21,8 +21,8 @@ import (
 
 	"github.com/minio/cli"
 	"github.com/minio/mc/pkg/probe"
-	iampolicy "github.com/minio/minio/pkg/iam/policy"
-	"github.com/minio/minio/pkg/madmin"
+	iampolicy "github.com/soulteary/otterio/pkg/iam/policy"
+	"github.com/soulteary/otterio/pkg/madmin"
 )
 
 var adminUserSvcAcctSetFlags = []cli.Flag{

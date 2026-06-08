@@ -25,8 +25,8 @@ import (
 	"github.com/minio/cli"
 	json "github.com/minio/mc/pkg/colorjson"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/console"
-	iampolicy "github.com/minio/minio/pkg/iam/policy"
+	"github.com/soulteary/otterio/pkg/console"
+	iampolicy "github.com/soulteary/otterio/pkg/iam/policy"
 )
 
 var adminPolicyAddCmd = cli.Command{

@@ -21,8 +21,8 @@ import (
 	"strings"
 
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/console"
-	"github.com/minio/minio/pkg/quick"
+	"github.com/soulteary/otterio/pkg/console"
+	"github.com/soulteary/otterio/pkg/quick"
 )
 
 // migrate config files from the any older version to the latest.

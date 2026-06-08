@@ -31,9 +31,9 @@ import (
 	"github.com/minio/cli"
 	json "github.com/minio/mc/pkg/colorjson"
 	"github.com/minio/mc/pkg/probe"
-	"github.com/minio/minio/pkg/console"
-	"github.com/minio/minio/pkg/madmin"
-	"github.com/minio/minio/pkg/trace"
+	"github.com/soulteary/otterio/pkg/console"
+	"github.com/soulteary/otterio/pkg/madmin"
+	"github.com/soulteary/otterio/pkg/trace"
 )
 
 var adminTraceFlags = []cli.Flag{
