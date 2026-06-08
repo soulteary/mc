@@ -156,7 +156,7 @@ func printRemotes(ctx *cli.Context, urlStr string, targets []madmin.BucketTarget
 			ServiceType:     string(target.Type),
 			ReplicationSync: target.ReplicationSync,
 			Bandwidth:       target.BandwidthLimit,
-			Proxy:           !target.DisableProxy,
+			Proxy:           true,
 		})
 	}
 }

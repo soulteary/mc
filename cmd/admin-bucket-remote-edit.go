@@ -41,10 +41,6 @@ var adminBucketRemoteEditFlags = []cli.Flag{
 		Usage: "enable synchronous replication for this target. Valid values are enable,disable.Defaults to disable if unset",
 	},
 	cli.StringFlag{
-		Name:  "proxy",
-		Usage: "enable proxying in active-active replication. Valid values are enable,disable.By default proxying is enabled.",
-	},
-	cli.StringFlag{
 		Name:  "bandwidth",
 		Usage: "Set bandwidth limit in bits per second (K,B,G,T for metric and Ki,Bi,Gi,Ti for IEC units)",
 	},
@@ -98,8 +94,8 @@ EXAMPLES:
 				 --arn "arn:minio:replication:us-west-1:993bc6b6-accd-45e3-884f-5f3e652aed2a:dest1"
     {{.EnableHistory}}
 
-  2. Edit remote target for sourceBucket on sitea with specified ARN to disable proxying and enable synchronous replication
-	   {{.Prompt}} {{.HelpName}} sitea/sourcebucket --sync "enable" --proxy "disable"
+  2. Edit remote target for sourceBucket on sitea with specified ARN to enable synchronous replication
+	   {{.Prompt}} {{.HelpName}} sitea/sourcebucket --sync "enable" \
 				--arn "arn:minio:replication:us-west-1:993bc6b6-accd-45e3-884f-5f3e652aed2a:dest1"
 `,
 }
@@ -115,8 +111,8 @@ func checkAdminBucketRemoteEditSyntax(ctx *cli.Context) {
 	}
 }
 
-// modifyRemoteTarget - modifies the dest credentials or updates sync , disable-proxy settings
-func modifyRemoteTarget(cli *cli.Context, targets []madmin.BucketTarget) (*madmin.BucketTarget, []madmin.TargetUpdateType) {
+// modifyRemoteTarget - modifies the dest credentials or updates sync settings
+func modifyRemoteTarget(cli *cli.Context, targets []madmin.BucketTarget) *madmin.BucketTarget {
 	args := cli.Args()
 	foundIdx := -1
 	arn := cli.String("arn")
@@ -129,27 +125,14 @@ func modifyRemoteTarget(cli *cli.Context, targets []madmin.BucketTarget) (*madmi
 	if foundIdx < 0 {
 		fatalIf(errInvalidArgument().Trace(args...), "Unable to edit remote target - `"+arn+"` not found")
 	}
-	var ops []madmin.TargetUpdateType
 	bktTarget := targets[foundIdx].Clone()
 	if cli.IsSet("sync") {
 		syncState := strings.ToLower(cli.String("sync"))
 		switch syncState {
 		case "enable", "disable":
 			bktTarget.ReplicationSync = syncState == "enable"
-			ops = append(ops, madmin.SyncUpdateType)
 		default:
 			fatalIf(errInvalidArgument().Trace(args...), "--sync can be either [enable|disable]")
-		}
-	}
-	if cli.IsSet("proxy") {
-		proxyState := strings.ToLower(cli.String("proxy"))
-		switch proxyState {
-		case "enable", "disable":
-			bktTarget.DisableProxy = proxyState == "disable"
-			ops = append(ops, madmin.ProxyUpdateType)
-
-		default:
-			fatalIf(errInvalidArgument().Trace(args...), "--proxy can be either [enable|disable]")
 		}
 	}
 
@@ -193,7 +176,6 @@ func modifyRemoteTarget(cli *cli.Context, targets []madmin.BucketTarget) (*madmi
 		bktTarget.Secure = secure
 		bktTarget.Credentials = creds
 		bktTarget.Endpoint = host
-		ops = append(ops, madmin.CredentialsUpdateType)
 	}
 	if cli.IsSet("bandwidth") {
 		bandwidthStr := cli.String("bandwidth")
@@ -202,18 +184,14 @@ func modifyRemoteTarget(cli *cli.Context, targets []madmin.BucketTarget) (*madmi
 			fatalIf(errInvalidArgument().Trace(bandwidthStr), "Invalid bandwidth number")
 		}
 		bktTarget.BandwidthLimit = int64(bandwidth)
-		ops = append(ops, madmin.BandwidthLimitUpdateType)
-
 	}
 	if cli.IsSet("healthcheck-seconds") {
 		bktTarget.HealthCheckDuration = time.Duration(cli.Uint("healthcheck-seconds")) * time.Second
-		ops = append(ops, madmin.HealthCheckDurationUpdateType)
 	}
 	if cli.IsSet("path") {
 		bktTarget.Path = cli.String("path")
-		ops = append(ops, madmin.PathUpdateType)
 	}
-	return &bktTarget, ops
+	return &bktTarget
 }
 
 // mainAdminBucketRemoteEdit is the handle for "mc admin bucket remote edit" command.
@@ -233,9 +211,9 @@ func mainAdminBucketRemoteEdit(ctx *cli.Context) error {
 	targets, e := client.ListRemoteTargets(globalContext, sourceBucket, "")
 	fatalIf(probe.NewError(e).Trace(args...), "Unable to fetch remote target.")
 
-	bktTarget, ops := modifyRemoteTarget(ctx, targets)
+	bktTarget := modifyRemoteTarget(ctx, targets)
 
-	arn, e := client.UpdateRemoteTarget(globalContext, bktTarget, ops...)
+	arn, e := client.UpdateRemoteTarget(globalContext, bktTarget)
 	if e != nil {
 		fatalIf(probe.NewError(e).Trace(args...), "Unable to update remote target `"+bktTarget.Endpoint+"` from `"+bktTarget.SourceBucket+"` -> `"+bktTarget.TargetBucket+"`")
 	}

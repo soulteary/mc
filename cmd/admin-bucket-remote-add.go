@@ -60,10 +60,6 @@ var adminBucketRemoteAddFlags = []cli.Flag{
 		Usage: "health check duration in seconds",
 		Value: 60,
 	},
-	cli.BoolFlag{
-		Name:  "disable-proxy",
-		Usage: "disable proxying in active-active replication. If unset, default behavior is to proxy",
-	},
 }
 var adminBucketRemoteAddCmd = cli.Command{
 	Name:         "add",
@@ -224,7 +220,6 @@ func fetchRemoteTarget(cli *cli.Context) (sourceBucket string, bktTarget *madmin
 	}
 	console.SetColor(cred, color.New(color.FgYellow, color.Italic))
 	creds := &auth.Credentials{AccessKey: accessKey, SecretKey: secretKey}
-	proxy := cli.Bool("proxy")
 	bktTarget = &madmin.BucketTarget{
 		TargetBucket:        TargetBucket,
 		Secure:              u.Scheme == "https",
@@ -236,7 +231,6 @@ func fetchRemoteTarget(cli *cli.Context) (sourceBucket string, bktTarget *madmin
 		Region:              cli.String("region"),
 		BandwidthLimit:      int64(bandwidth),
 		ReplicationSync:     cli.Bool("sync"),
-		DisableProxy:        !proxy,
 		HealthCheckDuration: time.Duration(cli.Uint("healthcheck-seconds")) * time.Second,
 	}
 	return sourceBucket, bktTarget
@@ -279,7 +273,7 @@ func mainAdminBucketRemoteAdd(ctx *cli.Context) error {
 		SourceBucket:    sourceBucket,
 		RemoteARN:       arn,
 		ReplicationSync: bktTarget.ReplicationSync,
-		Proxy:           !bktTarget.DisableProxy,
+		Proxy:           true,
 	})
 
 	return nil
