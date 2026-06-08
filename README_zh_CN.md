@@ -81,8 +81,8 @@ mc.exe --help
 如果您没有Golang环境，请参照[如何安装Golang](https://golang.org/doc/install)。
 
 ```
-go get -d github.com/minio/mc
-cd ${GOPATH}/src/github.com/minio/mc
+go get -d github.com/soulteary/mc
+cd ${GOPATH}/src/github.com/soulteary/mc
 make
 ```
 
@@ -170,4 +170,4 @@ cat      cp       events   mb       pipe     rm       share    version
 - [MinIO官方文档](https://docs.min.io)
 
 ## 贡献
-请遵守MinIO[贡献者指南](https://github.com/minio/mc/blob/master/docs/zh_CN/CONTRIBUTING.md)
+请遵守MinIO[贡献者指南](https://github.com/soulteary/mc/blob/master/docs/zh_CN/CONTRIBUTING.md)

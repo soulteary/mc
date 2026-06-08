@@ -1,3 +1,4 @@
+//go:build go1.13
 // +build go1.13
 
 /*
@@ -18,16 +19,16 @@
 
 /*
  * Below main package has canonical imports for 'go get' and 'go build'
- * to work with all other clones of github.com/minio/mc repository. For
+ * to work with all other clones of github.com/soulteary/mc repository. For
  * more information refer https://golang.org/doc/go1.4#canonicalimports
  */
 
-package main // import "github.com/minio/mc"
+package main // import "github.com/soulteary/mc"
 
 import (
 	"os"
 
-	mc "github.com/minio/mc/cmd"
+	mc "github.com/soulteary/mc/cmd"
 )
 
 func main() {

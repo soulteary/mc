@@ -75,8 +75,8 @@ mc.exe --help
 如果您没有Golang环境，请按照 [如何安装Golang](https://golang.org/doc/install)。
 
 ```
-go get -d github.com/minio/mc
-cd ${GOPATH}/src/github.com/minio/mc
+go get -d github.com/soulteary/mc
+cd ${GOPATH}/src/github.com/soulteary/mc
 make
 ```
 

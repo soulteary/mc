@@ -30,14 +30,14 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/minio/cli"
-	json "github.com/minio/mc/pkg/colorjson"
-	"github.com/minio/mc/pkg/probe"
 	"github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/encrypt"
 	"github.com/minio/minio-go/v7/pkg/notification"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	json "github.com/soulteary/mc/pkg/colorjson"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 )
 

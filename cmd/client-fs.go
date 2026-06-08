@@ -34,15 +34,15 @@ import (
 	"github.com/pkg/xattr"
 	"github.com/rjeczalik/notify"
 
-	"github.com/minio/mc/pkg/disk"
-	"github.com/minio/mc/pkg/hookreader"
-	"github.com/minio/mc/pkg/ioutils"
-	"github.com/minio/mc/pkg/probe"
 	minio "github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/encrypt"
 	"github.com/minio/minio-go/v7/pkg/lifecycle"
 	"github.com/minio/minio-go/v7/pkg/notification"
 	"github.com/minio/minio-go/v7/pkg/replication"
+	"github.com/soulteary/mc/pkg/disk"
+	"github.com/soulteary/mc/pkg/hookreader"
+	"github.com/soulteary/mc/pkg/ioutils"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 )
 

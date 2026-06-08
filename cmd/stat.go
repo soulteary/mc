@@ -27,12 +27,12 @@ import (
 	"time"
 
 	humanize "github.com/dustin/go-humanize"
-	json "github.com/minio/mc/pkg/colorjson"
-	"github.com/minio/mc/pkg/probe"
 	minio "github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/lifecycle"
 	"github.com/minio/minio-go/v7/pkg/notification"
 	"github.com/minio/minio-go/v7/pkg/replication"
+	json "github.com/soulteary/mc/pkg/colorjson"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 )
 

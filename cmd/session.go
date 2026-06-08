@@ -23,7 +23,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/probe"
 )
 
 // migrateSession migrates all previous migration to latest.

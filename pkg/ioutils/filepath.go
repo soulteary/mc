@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// Package ioutils implements helper functions used in github.com/minio/mc
+// Package ioutils implements helper functions used in github.com/soulteary/mc
 package ioutils
 
 import (

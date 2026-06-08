@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 /*
@@ -28,10 +29,10 @@ import (
 
 func genLDFlags(version string) string {
 	var ldflagsStr string
-	ldflagsStr = "-s -w -X github.com/minio/mc/cmd.Version=" + version + " "
-	ldflagsStr = ldflagsStr + "-X github.com/minio/mc/cmd.ReleaseTag=" + releaseTag(version) + " "
-	ldflagsStr = ldflagsStr + "-X github.com/minio/mc/cmd.CommitID=" + commitID() + " "
-	ldflagsStr = ldflagsStr + "-X github.com/minio/mc/cmd.ShortCommitID=" + commitID()[:12]
+	ldflagsStr = "-s -w -X github.com/soulteary/mc/cmd.Version=" + version + " "
+	ldflagsStr = ldflagsStr + "-X github.com/soulteary/mc/cmd.ReleaseTag=" + releaseTag(version) + " "
+	ldflagsStr = ldflagsStr + "-X github.com/soulteary/mc/cmd.CommitID=" + commitID() + " "
+	ldflagsStr = ldflagsStr + "-X github.com/soulteary/mc/cmd.ShortCommitID=" + commitID()[:12]
 	return ldflagsStr
 }
 

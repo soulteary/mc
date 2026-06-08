@@ -20,7 +20,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/certs"
 )
 

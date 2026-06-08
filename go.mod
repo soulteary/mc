@@ -1,4 +1,4 @@
-module github.com/minio/mc
+module github.com/soulteary/mc
 
 go 1.26
 

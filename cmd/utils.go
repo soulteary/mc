@@ -39,8 +39,8 @@ import (
 	"github.com/minio/minio-go/v7/pkg/encrypt"
 	"github.com/soulteary/otterio/pkg/madmin"
 
-	"github.com/minio/mc/pkg/ioutils"
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/ioutils"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 )
 

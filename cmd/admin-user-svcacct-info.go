@@ -20,7 +20,7 @@ import (
 	"fmt"
 
 	"github.com/minio/cli"
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/probe"
 )
 
 var adminUserSvcAcctInfoFlags = []cli.Flag{

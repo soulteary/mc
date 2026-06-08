@@ -21,9 +21,9 @@ import (
 	"errors"
 
 	"github.com/minio/cli"
-	json "github.com/minio/mc/pkg/colorjson"
-	"github.com/minio/mc/pkg/probe"
 	"github.com/minio/minio-go/v7/pkg/lifecycle"
+	json "github.com/soulteary/mc/pkg/colorjson"
+	"github.com/soulteary/mc/pkg/probe"
 )
 
 var ilmExportCmd = cli.Command{

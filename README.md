@@ -109,7 +109,7 @@ mc.exe --help
 Source installation is only intended for developers and advanced users. If you do not have a working Golang environment, please follow [How to install Golang](https://golang.org/doc/install). Minimum version required is [go1.13](https://golang.org/dl/#stable)
 
 ```sh
-GO111MODULE=on go get github.com/minio/mc
+GO111MODULE=on go get github.com/soulteary/mc
 ```
 
 ## Add a Cloud Storage Service
@@ -239,7 +239,7 @@ cat      cp       event    head     mb       pipe     rm       share    stat    
 - [The MinIO documentation website](https://docs.min.io)
 
 ## Contribute to MinIO Project
-Please follow MinIO [Contributor's Guide](https://github.com/minio/mc/blob/master/CONTRIBUTING.md)
+Please follow MinIO [Contributor's Guide](https://github.com/soulteary/mc/blob/master/CONTRIBUTING.md)
 
 ## License
-Use of `mc` is governed by the Apache 2.0 License found at [LICENSE](https://github.com/minio/mc/blob/master/LICENSE).
+Use of `mc` is governed by the Apache 2.0 License found at [LICENSE](https://github.com/soulteary/mc/blob/master/LICENSE).

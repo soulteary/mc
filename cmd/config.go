@@ -25,7 +25,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/probe"
 
 	"github.com/mitchellh/go-homedir"
 )

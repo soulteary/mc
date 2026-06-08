@@ -21,7 +21,7 @@ import (
 	"net/http/httputil"
 	"strings"
 
-	"github.com/minio/mc/pkg/httptracer"
+	"github.com/soulteary/mc/pkg/httptracer"
 	"github.com/soulteary/otterio/pkg/console"
 )
 

@@ -22,9 +22,9 @@ import (
 	"strconv"
 	"time"
 
-	json "github.com/minio/mc/pkg/colorjson"
-	"github.com/minio/mc/pkg/probe"
 	"github.com/minio/minio-go/v7"
+	json "github.com/soulteary/mc/pkg/colorjson"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 )
 

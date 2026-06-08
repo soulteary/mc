@@ -24,8 +24,8 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/minio/cli"
-	"github.com/minio/mc/pkg/ioutils"
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/ioutils"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 )
 

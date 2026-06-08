@@ -33,8 +33,8 @@ import (
 
 	"github.com/cheggaaa/pb"
 	"github.com/minio/cli"
-	"github.com/minio/mc/pkg/probe"
 	"github.com/pkg/profile"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 	"github.com/soulteary/otterio/pkg/trie"
 	"github.com/soulteary/otterio/pkg/words"

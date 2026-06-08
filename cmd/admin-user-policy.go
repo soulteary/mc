@@ -23,7 +23,7 @@ import (
 	"github.com/fatih/color"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/minio/cli"
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 	iampolicy "github.com/soulteary/otterio/pkg/iam/policy"
 )

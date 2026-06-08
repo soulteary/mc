@@ -18,8 +18,8 @@ package cmd
 
 import (
 	"github.com/minio/cli"
-	json "github.com/minio/mc/pkg/colorjson"
-	"github.com/minio/mc/pkg/probe"
+	json "github.com/soulteary/mc/pkg/colorjson"
+	"github.com/soulteary/mc/pkg/probe"
 )
 
 var adminConfigExportCmd = cli.Command{

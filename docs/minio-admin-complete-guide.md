@@ -68,8 +68,8 @@ Source installation is intended only for developers and advanced users. `mc upda
 If you do not have a working Golang environment, please follow [How to install Golang](https://golang.org/doc/install).
 
 ```
-go get -d github.com/minio/mc
-cd ${GOPATH}/src/github.com/minio/mc
+go get -d github.com/soulteary/mc
+cd ${GOPATH}/src/github.com/soulteary/mc
 make
 ```
 

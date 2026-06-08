@@ -32,9 +32,9 @@ import (
 	"gopkg.in/h2non/filetype.v1"
 
 	"github.com/minio/cli"
-	"github.com/minio/mc/pkg/probe"
 	minio "github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/encrypt"
+	"github.com/soulteary/mc/pkg/probe"
 )
 
 // decode if the key is encoded key and returns the key

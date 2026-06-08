@@ -23,11 +23,11 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/minio/cli"
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 
 	jwtgo "github.com/dgrijalva/jwt-go"
-	json "github.com/minio/mc/pkg/colorjson"
+	json "github.com/soulteary/mc/pkg/colorjson"
 	yaml "gopkg.in/yaml.v2"
 )
 

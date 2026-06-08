@@ -20,7 +20,7 @@ import (
 	"os"
 
 	"github.com/minio/cli"
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/probe"
 	iampolicy "github.com/soulteary/otterio/pkg/iam/policy"
 	"github.com/soulteary/otterio/pkg/madmin"
 )

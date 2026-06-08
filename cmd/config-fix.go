@@ -23,7 +23,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/minio/mc/pkg/probe"
+	"github.com/soulteary/mc/pkg/probe"
 	"github.com/soulteary/otterio/pkg/console"
 	"github.com/soulteary/otterio/pkg/quick"
 )
@@ -265,7 +265,7 @@ func fixConfigV6() {
 // fixConfigLocation will resolve the possible duplicate location of Windows config files.
 // If there is duplicate configs, it will use the currently enabled config location and
 // move it to the 'normalized' location.
-// See https://github.com/minio/mc/pull/2898
+// See https://github.com/soulteary/mc/pull/2898
 func fixConfigLocation() {
 	if runtime.GOOS != "windows" || mcCustomConfigDir != mustGetMcConfigDir() {
 		return
