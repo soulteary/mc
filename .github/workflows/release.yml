@@ -2,6 +2,9 @@ name: Fork Release
 on:
   push:
     tags: ['RELEASE.*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -47,7 +50,7 @@ jobs:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
           CGO_ENABLED: '0'
-          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'RELEASE.1970-01-01T00-00-00Z' }}
           SOURCE_SHA: ${{ github.sha }}
           OUTPUT: ${{ matrix.filename }}
         shell: bash
@@ -60,6 +63,7 @@ jobs:
           path: ${{ matrix.filename }}
           if-no-files-found: error
   publish:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/RELEASE.')
     needs: build
     runs-on: ubuntu-latest
     permissions:
