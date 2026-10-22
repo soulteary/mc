@@ -24,6 +24,7 @@ require (
 	github.com/rs/xid v1.6.0
 	github.com/shirou/gopsutil/v3 v3.24.5
 	github.com/soulteary/otterio v0.0.0-20261022143657-3bf697dfb255
+	github.com/soulteary/otterio-sdk/v7 v7.3.3
 	github.com/tidwall/gjson v1.20.0
 	golang.org/x/net v0.61.0
 	golang.org/x/term v0.47.0
@@ -72,7 +73,6 @@ require (
 	github.com/secure-io/sio-go v0.3.1 // indirect
 	github.com/shoenig/go-m1cpu v0.2.4 // indirect
 	github.com/soulteary/otterio-kits/md5-simd v1.2.1 // indirect
-	github.com/soulteary/otterio-sdk/v7 v7.3.3 // indirect
 	github.com/tidwall/match v1.2.0 // indirect
 	github.com/tidwall/pretty v1.2.2 // indirect
 	github.com/tinylib/msgp v1.6.5 // indirect
