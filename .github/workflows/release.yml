@@ -1,0 +1,80 @@
+name: Fork Release
+on:
+  push:
+    tags: ['RELEASE.*']
+permissions:
+  contents: read
+concurrency:
+  group: fork-release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - run: |
+          go mod tidy
+          git diff --exit-code -- go.mod go.sum
+          go test -race ./...
+          go vet ./...
+  build:
+    needs: verify
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {goos: linux, goarch: amd64, filename: mc-linux-amd64}
+          - {goos: linux, goarch: arm64, filename: mc-linux-arm64}
+          - {goos: darwin, goarch: amd64, filename: mc-darwin-amd64}
+          - {goos: darwin, goarch: arm64, filename: mc-darwin-arm64}
+          - {goos: windows, goarch: amd64, filename: mc-windows-amd64.exe}
+          - {goos: windows, goarch: arm64, filename: mc-windows-arm64.exe}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - name: Build the tagged fork
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: '0'
+          RELEASE_TAG: ${{ github.ref_name }}
+          SOURCE_SHA: ${{ github.sha }}
+          OUTPUT: ${{ matrix.filename }}
+        shell: bash
+        run: |
+          version=$(python -c 'import datetime,os; print(datetime.datetime.strptime(os.environ["RELEASE_TAG"], "RELEASE.%Y-%m-%dT%H-%M-%SZ").strftime("%Y-%m-%dT%H:%M:%SZ"))')
+          go build -trimpath -tags kqueue -ldflags "-s -w -X github.com/soulteary/mc/cmd.Version=$version -X github.com/soulteary/mc/cmd.ReleaseTag=$RELEASE_TAG -X github.com/soulteary/mc/cmd.CommitID=$SOURCE_SHA -X github.com/soulteary/mc/cmd.ShortCommitID=${SOURCE_SHA:0:12}" -o "$OUTPUT" .
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.filename }}
+          path: ${{ matrix.filename }}
+          if-no-files-found: error
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Checksum release binaries
+        working-directory: artifacts
+        run: sha256sum mc-* > SHA256SUMS
+      - uses: softprops/action-gh-release@v2
+        with:
+          repository: soulteary/mc
+          files: artifacts/*
+          fail_on_unmatched_files: true
+          generate_release_notes: true

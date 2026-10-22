@@ -8,7 +8,7 @@ GOOS := $(shell go env GOOS)
 BUILD_LDFLAGS := '$(LDFLAGS)'
 
 VERSION ?= $(shell git describe --tags)
-TAG ?= "minio/mc:$(VERSION)"
+TAG ?= "ghcr.io/soulteary/mc:$(VERSION)"
 
 all: build
 

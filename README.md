@@ -1,4 +1,10 @@
 # MinIO Client Quickstart Guide
+
+> This repository is the `soulteary/mc` fork and requires Go 1.27.3.
+> Download this fork from https://github.com/soulteary/mc/releases.
+> Historical MinIO installation URLs and `mc update` refer to upstream MinIO,
+> not this fork. Use this repository's release assets to update the fork.
+
 [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io) [![Go Report Card](https://goreportcard.com/badge/minio/mc)](https://goreportcard.com/report/minio/mc) [![Docker Pulls](https://img.shields.io/docker/pulls/minio/mc.svg?maxAge=604800)](https://hub.docker.com/r/minio/mc/)
 
 MinIO Client (mc) provides a modern alternative to UNIX commands like ls, cat, cp, mirror, diff, find etc. It supports filesystems and Amazon S3 compatible cloud storage service (AWS Signature v2 and v4).
@@ -106,7 +112,7 @@ mc.exe --help
 ```
 
 ## Install from Source
-Source installation is only intended for developers and advanced users. If you do not have a working Golang environment, please follow [How to install Golang](https://golang.org/doc/install). Minimum version required is [go1.13](https://golang.org/dl/#stable)
+Source installation is only intended for developers and advanced users. If you do not have a working Golang environment, please follow [How to install Golang](https://golang.org/doc/install). Minimum version required is Go 1.27.3
 
 ```sh
 GO111MODULE=on go get github.com/soulteary/mc
