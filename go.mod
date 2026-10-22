@@ -23,7 +23,8 @@ require (
 	github.com/rjeczalik/notify v0.9.3
 	github.com/rs/xid v1.6.0
 	github.com/shirou/gopsutil/v3 v3.24.5
-	github.com/soulteary/otterio v0.0.0-20260608183932-069536702e03
+	github.com/soulteary/otterio v0.0.0-20261022143657-3bf697dfb255
+	github.com/soulteary/otterio-sdk/v7 v7.3.3
 	github.com/tidwall/gjson v1.20.0
 	golang.org/x/net v0.61.0
 	golang.org/x/term v0.47.0
@@ -71,13 +72,13 @@ require (
 	github.com/rogpeppe/go-internal v1.16.0 // indirect
 	github.com/secure-io/sio-go v0.3.1 // indirect
 	github.com/shoenig/go-m1cpu v0.2.4 // indirect
+	github.com/soulteary/otterio-kits/md5-simd v1.2.1 // indirect
 	github.com/tidwall/match v1.2.0 // indirect
 	github.com/tidwall/pretty v1.2.2 // indirect
 	github.com/tinylib/msgp v1.6.5 // indirect
 	github.com/tklauser/go-sysconf v0.4.0 // indirect
 	github.com/tklauser/numcpus v0.12.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
-	github.com/zeebo/assert v1.3.1 // indirect
 	github.com/zeebo/xxh3 v1.1.0 // indirect
 	go.etcd.io/etcd/api/v3 v3.7.2 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.7.2 // indirect

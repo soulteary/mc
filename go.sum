@@ -161,8 +161,12 @@ github.com/shoenig/go-m1cpu v0.2.4 h1:F5esY3x6L2iIxmqHnMZ5afJwXBy573/fwkPgvatExg
 github.com/shoenig/go-m1cpu v0.2.4/go.mod h1:38ReYghj5Sqaa2nPBh2aJAHyFSi2vpTQJLM7TFJRxNM=
 github.com/shoenig/test v1.13.2 h1:SaGxHxg7xkRuKuNtuFmHf0LgNGaAgcBT7HN4WHCKfqU=
 github.com/shoenig/test v1.13.2/go.mod h1:MKmiRyEeuFl8y9PCoThaRDgYQZeWBhRQlH99poXz5LI=
-github.com/soulteary/otterio v0.0.0-20260608183932-069536702e03 h1:5TkdC+ndA94hB0cjjEBBv6OLw53Q1kpulwiCtz+ggq0=
-github.com/soulteary/otterio v0.0.0-20260608183932-069536702e03/go.mod h1:fc+Q3j17LZx/NQbm1XPzG9HrpXAmdaAIZEeCz5VmFOY=
+github.com/soulteary/otterio v0.0.0-20261022143657-3bf697dfb255 h1:kajYX5g2keOgIpD0RMU7OUJZCg4E0F6bjz8zGW1JybU=
+github.com/soulteary/otterio v0.0.0-20261022143657-3bf697dfb255/go.mod h1:4I9aj5YnrLp61QVNMCnzDYHHuCRxxiN0FVazYL/BB34=
+github.com/soulteary/otterio-kits/md5-simd v1.2.1 h1:uT0Ma63Mn7PEjNcxRmGQMMoaJE8xZ7mWuVs60oKU9JY=
+github.com/soulteary/otterio-kits/md5-simd v1.2.1/go.mod h1:B0CHLrx6j4umctX0trs2eCdiLvYBpF7SELkbis7Vo+E=
+github.com/soulteary/otterio-sdk/v7 v7.3.3 h1:Iw+BDCcL5mVYcwxR49Yid4YsH28eggdgnpZr1YWBs8s=
+github.com/soulteary/otterio-sdk/v7 v7.3.3/go.mod h1:VJZchDQXS+fcykAqihpMSHItExcuiNqzz1ibmK8XKOQ=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/objx v0.5.0/go.mod h1:Yh+to48EsGEfYuaHDzXPcE3xhTkx73EhmCGUpEOglKo=
