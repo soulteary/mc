@@ -8,7 +8,7 @@ GOOS := $(shell go env GOOS)
 BUILD_LDFLAGS := '$(LDFLAGS)'
 
 VERSION ?= $(shell git describe --tags)
-TAG ?= "minio/mc:$(VERSION)"
+TAG ?= "ghcr.io/soulteary/mc:$(VERSION)"
 
 all: build
 
@@ -18,8 +18,8 @@ checks:
 
 getdeps:
 	@mkdir -p ${GOPATH}/bin
-	@which golangci-lint 1>/dev/null || (echo "Installing golangci-lint" && go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.12.2)
-	@which stringer 1>/dev/null || (echo "Installing stringer" && go install golang.org/x/tools/cmd/stringer@latest)
+	@which golangci-lint 1>/dev/null || (echo "Installing golangci-lint" && go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.15.0)
+	@which stringer 1>/dev/null || (echo "Installing stringer" && go install golang.org/x/tools/cmd/stringer@v0.52.0)
 
 crosscompile:
 	@(env bash $(PWD)/buildscripts/cross-compile.sh)
